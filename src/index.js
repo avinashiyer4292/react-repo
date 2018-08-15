@@ -10,13 +10,13 @@ import NavBar from './components/uicomponents/NavBar';
 
 ReactDOM.render(
 
-			<Router>
-				<div className='container'>
-					<NavBar />
-					<Route path="/" component={App} />
-					<Route path="/user" component={User} />
-				</div>
-			</Router>
-
+			// <Router>
+			// 	<div className='container'>
+			// 		<NavBar />
+			// 		<Route path="/" component={App} />
+			// 		<Route path="/user" component={User} />
+			// 	</div>
+			// </Router>
+		<App />
 	, document.getElementById('root'));
 registerServiceWorker();
