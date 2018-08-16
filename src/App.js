@@ -9,15 +9,32 @@ class App extends Component {
       textLength: null,
       text: ''
     }
+    //this.remove = this.remove.bind(this);
   }
   showLength(event){
       this.setState({textLength: event.target.value.length, text:event.target.value});
   }
+
+  remove(index){
+    let text  = this.state.text.aplit('');
+    text.splice(index,1);
+    text = text.join('');
+    this.setState({text:text});
+
+    //text.splice(index,1);
+    console.log(`New text: ${text}`);
+    //this.setState({text: text});
+    
+  }
   render() {
 
-    
+    const charStyles={
+      border:'1px solid #cecece',
+      marginLeft:'40px' 
+    };
 
     return (
+     
       <div className="App">
         
         <input type="text" onChange={ (event) => this.showLength(event)} />
@@ -25,8 +42,8 @@ class App extends Component {
         <ValidationComponent length={this.state.textLength} />
         {
           Array.from(this.state.text.split(''))
-                .map( curr => {
-                  return <CharComponent char = {curr} />
+                .map( (curr,idx) => {
+                  return <CharComponent style={charStyles} key = {idx} char = {curr} onClick= {()=>this.remove(idx)} />
                 })
           }
         
