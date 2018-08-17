@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './counter-redux-example/CounterApp';
 import User from './components/pages/User';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
-import {BrowserRouter as Router,Route} from 'react-router-dom';
-import routes from './routes.js';
-import NavBar from './components/uicomponents/NavBar';
+
+
+import reducer from './store/reducer';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+const store = createStore(reducer);
+
 
 ReactDOM.render(
 
@@ -17,6 +22,8 @@ ReactDOM.render(
 			// 		<Route path="/user" component={User} />
 			// 	</div>
 			// </Router>
-		<App />
+		<Provider store={store}>
+			<App />
+		</Provider>
 	, document.getElementById('root'));
 registerServiceWorker();
